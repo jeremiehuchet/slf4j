@@ -1,0 +1,25 @@
+h1. slf4j-itinerennes
+
+h2. about 
+
+This project is a fork of "SLF4J":https://github.com/twwwt/slf4j. Only module _slf4j-android_ have been modified.
+
+h2. features added from slf4j-android to slf4j-itinerennes
+
+This fork aims to provide more flexibility on log level configuration by introducing a configuration file. 
+
+When using the library on Android > 2.1, log tags management has been improved. Restriction to 23 characted have been taken off so tag names doesn't have to be compressed/truncated.  
+
+h3. how to use it ?
+
+First add @slf4j-itinerennes-x.y.z.jar@ to your Android project's classpath (see the "downloads page":https://github.com/kops/slf4j/downloads).
+
+Then create a file @assets/slf4j.properties@. 
+
+```
+root.level = WARN
+com.groupId.artifactId = DEBUG
+com.groupId.artifactId.package.BusinessImpl = TRACE
+org.library.tools = INFO
+
+```
