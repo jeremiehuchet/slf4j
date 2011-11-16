@@ -16,10 +16,9 @@ First add @slf4j-itinerennes-x.y.z.jar@ to your Android project's classpath (see
 
 Then create a file @assets/slf4j.properties@. 
 
-```
+<pre>
 root.level = WARN
 com.groupId.artifactId = DEBUG
 com.groupId.artifactId.package.BusinessImpl = TRACE
 org.library.tools = INFO
-
-```
+</pre>
