@@ -57,6 +57,8 @@ import android.util.Log;
 public class AndroidLogger extends MarkerIgnoringBase
 {
 	private static final long serialVersionUID = -1227274521521287937L;
+	
+	private final int level;
 
 	/**
 	 * Package access allows only {@link AndroidLoggerFactory} to instantiate
@@ -64,187 +66,243 @@ public class AndroidLogger extends MarkerIgnoringBase
 	 */
 	AndroidLogger(final String name)
 	{
-		this.name = name;
+		this(name, Integer.MAX_VALUE);
 	}
 
-	/* @see org.slf4j.Logger#isTraceEnabled() */
+	AndroidLogger(String name, Integer level)
+	{
+		this.name = name;
+		this.level = level;
+	}
+
+  /* @see org.slf4j.Logger#isTraceEnabled() */
 	public boolean isTraceEnabled()
 	{
-		return Log.isLoggable(name, Log.VERBOSE);
+		return isLoggable(Log.VERBOSE);
 	}
 
 	/* @see org.slf4j.Logger#trace(java.lang.String) */
 	public void trace(final String msg)
 	{
-		Log.v(name, msg);
+		if (isTraceEnabled()) {
+			Log.v(name, msg);
+		}
 	}
 
 	/* @see org.slf4j.Logger#trace(java.lang.String, java.lang.Object) */
 	public void trace(final String format, final Object param1)
 	{
-		Log.v(name, format(format, param1, null));
+		if (isTraceEnabled()) {
+			Log.v(name, format(format, param1, null));
+		}
 	}
 
 	/* @see org.slf4j.Logger#trace(java.lang.String, java.lang.Object, java.lang.Object) */
 	public void trace(final String format, final Object param1, final Object param2)
 	{
-		Log.v(name, format(format, param1, param2));
+		if (isTraceEnabled()) {
+			Log.v(name, format(format, param1, param2));
+		}
 	}
 
 	/* @see org.slf4j.Logger#trace(java.lang.String, java.lang.Object[]) */
 	public void trace(final String format, final Object[] argArray)
 	{
-		Log.v(name, format(format, argArray));
+		if (isTraceEnabled()) {
+			Log.v(name, format(format, argArray));
+		}
 	}
 
 	/* @see org.slf4j.Logger#trace(java.lang.String, java.lang.Throwable) */
 	public void trace(final String msg, final Throwable t)
 	{
-		Log.v(name, msg, t);
+		if (isTraceEnabled()) {
+			Log.v(name, msg, t);
+		}
 	}
 
 	/* @see org.slf4j.Logger#isDebugEnabled() */
 	public boolean isDebugEnabled()
 	{
-		return Log.isLoggable(name, Log.DEBUG);
+		return isLoggable(Log.DEBUG);
 	}
 
 	/* @see org.slf4j.Logger#debug(java.lang.String) */
 	public void debug(final String msg)
 	{
-		Log.d(name, msg);
+		if (isDebugEnabled()) {
+			Log.d(name, msg);
+		}
 	}
 
 	/* @see org.slf4j.Logger#debug(java.lang.String, java.lang.Object) */
 	public void debug(final String format, final Object arg1)
 	{
-		Log.d(name, format(format, arg1, null));
+		if (isDebugEnabled()) {
+			Log.d(name, format(format, arg1, null));
+		}
 	}
 
 	/* @see org.slf4j.Logger#debug(java.lang.String, java.lang.Object, java.lang.Object) */
 	public void debug(final String format, final Object param1, final Object param2)
 	{
-		Log.d(name, format(format, param1, param2));
+		if (isDebugEnabled()) {
+			Log.d(name, format(format, param1, param2));
+		}
 	}
 
 	/* @see org.slf4j.Logger#debug(java.lang.String, java.lang.Object[]) */
 	public void debug(final String format, final Object[] argArray)
 	{
-		Log.d(name, format(format, argArray));
+		if (isDebugEnabled()) {
+			Log.d(name, format(format, argArray));
+		}
 	}
 
 	/* @see org.slf4j.Logger#debug(java.lang.String, java.lang.Throwable) */
 	public void debug(final String msg, final Throwable t)
 	{
-		Log.d(name, msg, t);
+		if (isDebugEnabled()) {
+			Log.d(name, msg, t);
+		}
 	}
 
 	/* @see org.slf4j.Logger#isInfoEnabled() */
 	public boolean isInfoEnabled()
 	{
-		return Log.isLoggable(name, Log.INFO);
+		return isLoggable(Log.INFO);
 	}
 
 	/* @see org.slf4j.Logger#info(java.lang.String) */
 	public void info(final String msg)
 	{
-		Log.i(name, msg);
+		if (isInfoEnabled()) {
+			Log.i(name, msg);
+		}
 	}
 
 	/* @see org.slf4j.Logger#info(java.lang.String, java.lang.Object) */
 	public void info(final String format, final Object arg)
 	{
-		Log.i(name, format(format, arg, null));
+		if (isInfoEnabled()) {
+			Log.i(name, format(format, arg, null));
+		}
 	}
 
 	/* @see org.slf4j.Logger#info(java.lang.String, java.lang.Object, java.lang.Object) */
 	public void info(final String format, final Object arg1, final Object arg2)
 	{
-		Log.i(name, format(format, arg1, arg2));
+		if (isInfoEnabled()) {
+			Log.i(name, format(format, arg1, arg2));
+		}
 	}
 
 	/* @see org.slf4j.Logger#info(java.lang.String, java.lang.Object[]) */
 	public void info(final String format, final Object[] argArray)
 	{
-		Log.i(name, format(format, argArray));
+		if (isInfoEnabled()) {
+			Log.i(name, format(format, argArray));
+		}
 	}
 
 	/* @see org.slf4j.Logger#info(java.lang.String, java.lang.Throwable) */
 	public void info(final String msg, final Throwable t)
 	{
-		Log.i(name, msg, t);
+		if (isInfoEnabled()) {
+			Log.i(name, msg, t);
+		}
 	}
 
 	/* @see org.slf4j.Logger#isWarnEnabled() */
 	public boolean isWarnEnabled()
 	{
-		return Log.isLoggable(name, Log.WARN);
+		return isLoggable(Log.WARN);
 	}
 
 	/* @see org.slf4j.Logger#warn(java.lang.String) */
 	public void warn(final String msg)
 	{
-		Log.w(name, msg);
+		if (isWarnEnabled()) {
+			Log.w(name, msg);
+		}
 	}
 
 	/* @see org.slf4j.Logger#warn(java.lang.String, java.lang.Object) */
 	public void warn(final String format, final Object arg)
 	{
-		Log.w(name, format(format, arg, null));
+		if (isWarnEnabled()) {
+			Log.w(name, format(format, arg, null));
+		}
 	}
 
 	/* @see org.slf4j.Logger#warn(java.lang.String, java.lang.Object, java.lang.Object) */
 	public void warn(final String format, final Object arg1, final Object arg2)
 	{
-		Log.w(name, format(format, arg1, arg2));
+		if (isWarnEnabled()) {
+			Log.w(name, format(format, arg1, arg2));
+		}
 	}
 
 	/* @see org.slf4j.Logger#warn(java.lang.String, java.lang.Object[]) */
 	public void warn(final String format, final Object[] argArray)
 	{
-		Log.w(name, format(format, argArray));
+		if (isWarnEnabled()) {
+			Log.w(name, format(format, argArray));
+		}
 	}
 
 	/* @see org.slf4j.Logger#warn(java.lang.String, java.lang.Throwable) */
 	public void warn(final String msg, final Throwable t)
 	{
-		Log.w(name, msg, t);
+		if (isWarnEnabled()) {
+			Log.w(name, msg, t);
+		}
 	}
 
 	/* @see org.slf4j.Logger#isErrorEnabled() */
 	public boolean isErrorEnabled()
 	{
-		return Log.isLoggable(name, Log.ERROR);
+		return isLoggable(Log.ERROR);
 	}
 
 	/* @see org.slf4j.Logger#error(java.lang.String) */
 	public void error(final String msg)
 	{
-		Log.e(name, msg);
+		if (isErrorEnabled()) {
+			Log.e(name, msg);
+		}
 	}
 
 	/* @see org.slf4j.Logger#error(java.lang.String, java.lang.Object) */
 	public void error(final String format, final Object arg)
 	{
-		Log.e(name, format(format, arg, null));
+		if (isErrorEnabled()) {
+			Log.e(name, format(format, arg, null));
+		}
 	}
 
 	/* @see org.slf4j.Logger#error(java.lang.String, java.lang.Object, java.lang.Object) */
 	public void error(final String format, final Object arg1, final Object arg2)
 	{
-		Log.e(name, format(format, arg1, arg2));
+		if (isErrorEnabled()) {
+			Log.e(name, format(format, arg1, arg2));
+		}
 	}
 
 	/* @see org.slf4j.Logger#error(java.lang.String, java.lang.Object[]) */
 	public void error(final String format, final Object[] argArray)
 	{
-		Log.e(name, format(format, argArray));
+		if (isErrorEnabled()) {
+			Log.e(name, format(format, argArray));
+		}
 	}
 
 	/* @see org.slf4j.Logger#error(java.lang.String, java.lang.Throwable) */
 	public void error(final String msg, final Throwable t)
 	{
-		Log.e(name, msg, t);
+		if (isErrorEnabled()) {
+			Log.e(name, msg, t);
+		}
 	}
 
 	/**
@@ -268,5 +326,10 @@ public class AndroidLogger extends MarkerIgnoringBase
 	private String format(final String format, final Object[] args)
 	{
 		return MessageFormatter.arrayFormat(format, args).getMessage();
+	}
+	
+	private boolean isLoggable(int logLevel)
+	{
+		return this.level <= logLevel;
 	}
 }
