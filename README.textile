@@ -1,10 +1,10 @@
-h1. slf4j-itinerennes
+h2. slf4j-itinerennes
 
-h2. about 
+h3. about 
 
 This project is a fork of "SLF4J":https://github.com/twwwt/slf4j. Only module _slf4j-android_ have been modified.
 
-h2. features added from slf4j-android to slf4j-itinerennes
+h3. features added from slf4j-android to slf4j-itinerennes
 
 This fork aims to provide more flexibility on log level configuration by introducing a configuration file. 
 
