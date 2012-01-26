@@ -87,7 +87,20 @@
 			<organization>Database &amp; Information Systems Group - University Of Basel - Switzerland</organization>
 			<organizationUrl>http://dbis.cs.unibas.ch/</organizationUrl>
 		</developer>
+        <developer>
+            <id>kops</id>
+            <name>Jeremie Huchet</name>
+            <roles>
+                <role>contributor - configuration externalization</role>
+            </roles>
+        </developer>
 	</developers>
+    
+    <scm>
+        <url>https://github.com/kops/slf4j/tree/master</url>
+        <connection>scm:git:git@github.com:kops/slf4j.git</connection>
+        <developerConnection>scm:git:git@github.com:kops/slf4j.git</developerConnection>
+    </scm>
 
 	<dependencies>
 		<dependency>
@@ -124,6 +137,7 @@
 				<!-- Google Android requires class compatibility set to 5.0. -->
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
+                <version>2.3.2</version>
 				<configuration>
 					<source>1.5</source>
 					<target>1.5</target>
@@ -148,6 +162,7 @@
 			<plugin>
 				<groupId>org.apache.felix</groupId>
 				<artifactId>maven-bundle-plugin</artifactId>
+                <version>2.3.6</version>
 				<extensions>true</extensions>
 				<executions>
 					<execution>
@@ -168,6 +183,7 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-jar-plugin</artifactId>
+                <version>2.3.2</version>
 				<configuration>
 					<archive>
 						<manifest>
@@ -179,6 +195,11 @@
 					</archive>
 				</configuration>
 			</plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-release-plugin</artifactId>
+                <version>2.2.2</version>
+            </plugin>
 		</plugins>
 	</build>
 
