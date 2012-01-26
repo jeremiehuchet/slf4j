@@ -30,8 +30,7 @@
 
    ======================================================================
 -->
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 
 <!-- We cannot inherit from root SLF4J since we would inherit JUnit dependency,
      but Google Android (android.jar) ships with a tailored JUnit version which
@@ -54,7 +53,7 @@
 
 	<groupId>org.slf4j</groupId>
 	<artifactId>slf4j-itinerennes</artifactId>
-	<version>1.0-SNAPSHOT</version>
+	<version>1.0</version>
 	<packaging>jar</packaging>
 	<name>SLF4J API and Google Android Binding</name>
 
