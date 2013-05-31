@@ -27,6 +27,8 @@ package org.slf4j.impl;
 import org.slf4j.ILoggerFactory;
 import org.slf4j.Logger;
 
+import android.os.Build;
+
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
 
@@ -39,6 +41,9 @@ import java.util.concurrent.ConcurrentMap;
 class AndroidLoggerFactory implements ILoggerFactory {
     static final String ANONYMOUS_TAG = "null";
     static final int TAG_MAX_LENGTH = 23;
+
+    /** Only SDK 6 and lower have a limitation on the tag name length. */
+    static final int API_LEVEL_WITH_TAG_LIMITATION = 6;
 
     private final ConcurrentMap<String, Logger> loggerMap = new ConcurrentHashMap<String, Logger>();
 
@@ -77,7 +82,7 @@ class AndroidLoggerFactory implements ILoggerFactory {
         }
 
         int length = loggerName.length();
-        if (length <= TAG_MAX_LENGTH) {
+        if (length <= TAG_MAX_LENGTH || Build.VERSION.SDK_INT >= API_LEVEL_WITH_TAG_LIMITATION) {
             return loggerName;
         }
 
