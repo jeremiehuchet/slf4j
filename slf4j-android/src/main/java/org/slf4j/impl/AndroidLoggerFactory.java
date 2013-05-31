@@ -55,7 +55,8 @@ class AndroidLoggerFactory implements ILoggerFactory {
         String tag = loggerNameToTag(name);
         Logger logger = loggerMap.get(tag);
         if (logger == null) {
-            Logger newInstance = new AndroidLoggerAdapter(tag);
+            Integer priority = AndroidLoggerConfiguration.getSingleton().getPriority(name);
+            Logger newInstance = new AndroidLoggerAdapter(tag, priority);
             Logger oldInstance = loggerMap.putIfAbsent(tag, newInstance);
             logger = oldInstance == null ? newInstance : oldInstance;
         }

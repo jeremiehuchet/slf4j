@@ -81,13 +81,19 @@ import org.slf4j.helpers.MessageFormatter;
 class AndroidLoggerAdapter extends MarkerIgnoringBase {
     private static final long serialVersionUID = -1227274521521287937L;
 
+    public final int level;
 
     /**
      * Package access allows only {@link AndroidLoggerFactory} to instantiate
      * SimpleLogger instances.
      */
     AndroidLoggerAdapter(String tag) {
+        this(tag, Integer.MAX_VALUE);
+    }
+
+    AndroidLoggerAdapter(String tag, int level) {
         this.name = tag;
+        this.level = level;
     }
 
     /**
@@ -541,7 +547,7 @@ class AndroidLoggerAdapter extends MarkerIgnoringBase {
     }
 
     private boolean isLoggable(int priority) {
-        return Log.isLoggable(name, priority);
+        return this.level <= priority;
     }
 
     private void _log(int priority, String message, Throwable throwable) {
