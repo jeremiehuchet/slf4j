@@ -45,6 +45,7 @@
                         </manifestEntries>
                         <manifestFile>${project.build.outputDirectory}/META-INF/MANIFEST.MF</manifestFile>
                     </archive>
+                    <classifier>itinerennes</classifier>
                 </configuration>
             </plugin>
 
